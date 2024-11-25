@@ -4,13 +4,13 @@ El programa debe crear un diccionario con las palabras y sus traducciones. Despu
 para traducirla palabra a palabra. Si una palabra no está en el diccionario debe dejarla sin traducir.'''
 
 diccionario = {}
-n = True
-while n == True:
-    palabra = input("Introduce la palabra: ")
-    if palabra == "terminar":
-        break
-    traduccion = input("Introduce la traducción: ")
-    diccionario[palabra] = traduccion
+traducciones = input("Introduce las traducciones: \n")
+traducciones = traducciones.split(",")
+traducciones.remove("terminar")
+print(traducciones)
+for i in range(len(traducciones)):
+    clave, valor = traducciones[i].split(":")
+    diccionario[clave] = valor
 frasetraducida = ""
 frase = input("Introduce una frase en español: \n")
 for i in frase.split():
