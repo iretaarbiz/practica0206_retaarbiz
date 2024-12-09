@@ -38,9 +38,9 @@ while terminar == True:
                 diccionarioalumnos["correo"] = correo
             else:
                 aprobado = input("Introduce si esta aprobado o no (Si/No): ")
-                if diccionarioalumnos[aprobado] == "Si" or "si":
+                if aprobado == "Si" or "si":
                     aprobadobool = True
-                elif diccionarioalumnos[aprobado] == "No" or "no":
+                elif aprobado == "No" or "no":
                     aprobadobool = False
                 diccionarioalumnos["aprobado"] = aprobadobool
         diccionario[nif] = diccionarioalumnos
