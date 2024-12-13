@@ -34,11 +34,16 @@ while terminar == True:
             diccionarioalumnos["teléfono"] = telefono
             correo = input("Introduce el correo: ")
             diccionarioalumnos["correo"] = correo
-            aprobado = input("Introduce si esta aprobado o no (Si/No): ")
-            if aprobado == "Si" or "si":
-                aprobadobool = True
-            elif aprobado == "No" or "no":
-                aprobadobool = False
+            while True:
+                aprobado = input("Introduce si esta aprobado o no (Si/No): \n")
+                if aprobado == "Si" or "si":
+                    aprobadobool = True
+                    break
+                elif aprobado == "No" or "no":
+                    aprobadobool = False
+                    break
+                else:
+                    print("La palabra introducida es diferente a 'Si' y 'No', vuelve a introducir la palabra")
             diccionarioalumnos["aprobado"] = aprobadobool
             diccionario[nif] = diccionarioalumnos
         elif accion == 2:
@@ -49,12 +54,13 @@ while terminar == True:
                     print("Volviendo al menú principal \n")
                     break
                 else:
-                    nif = input("Introduce el NIF del alumno o 'salir' para volver al menú principal: ")
+                    nif = input("Introduce el NIF del alumno para eliminarlo de la base de datos o 'salir' para volver al menú principal: ")
                     if nif in diccionario.keys():
                         del diccionario[nif]
-                        print("El alumno con NIF", nif, "ha sido eliminado")
+                        print("El alumno con NIF", nif, "ha sido eliminado \n")
                         break
                     elif nif == "salir":
+                        print("\n")
                         break
                     else:
                         print("El NIF introducido no está en nuestra base de datos")
@@ -65,11 +71,13 @@ while terminar == True:
                     print("La base de datos esta vacia, prueba a usar la acción 'Añadir alumno/a' antes de usar las demas acciones")
                     print("Volviendo al menú principal \n")
                     break
-                    nif = input("Introduce el NIF del alumno o 'salir' para volver al menú principal: ")
+                else:
+                    nif = input("Introduce el NIF del alumno para mostrar sus datos o 'salir' para volver al menú principal: ")
                     if nif in diccionario.keys():
-                        print(diccionario[nif])
+                        print(diccionario[nif], "\n")
                         break
                     elif nif == "salir":
+                        print("\n")
                         break
                     else:
                         print("El NIF introducido no está en nuestra base de datos")
@@ -79,7 +87,7 @@ while terminar == True:
                     print("La base de datos esta vacia, prueba a usar la acción 'Añadir alumno/a' antes de usar las demas acciones")
                     print("Volviendo al menú principal \n")
             for i in diccionario.keys():
-                print(diccionario[i]['nombre'])
+                print(diccionario[i]['nombre'], "\n")
         elif accion == 5:
             print("Has accedido a la opción de 'Listar alumnado aprobado'")
             if len(diccionario) == 0:
@@ -87,7 +95,7 @@ while terminar == True:
                     print("Volviendo al menú principal \n")
             for i in diccionario.keys():
                 if diccionario[i]['aprobado'] == True:
-                    print(diccionario[i]['nombre'])   
+                    print(diccionario[i]['nombre'], "\n")   
         elif accion == 6:
             print("¿Estás seguro de que quieres terminar la ejecución del programa? Todos los datos se borrarán (Si/No)")
             while True:
@@ -97,10 +105,10 @@ while terminar == True:
                     terminar = False
                     break
                 elif acabar.lower() == "no":
-                    print("Volviendo al menú principal")
+                    print("Volviendo al menú principal \n")
                     break
                 else:
-                    print("La palabra introducida es diferente a Si y No, vuelve a introducir la palabra")
+                    print("La palabra introducida es diferente a 'Si' y 'No', vuelve a introducir la palabra")
 
     else:
         print("Porfavor introduce un número asociado a una función del programa \n")
